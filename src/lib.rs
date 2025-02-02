@@ -2,16 +2,26 @@
 //!
 //! provides a handy macro for converting `a + b` to `a.add(b)` for when you cant easily overload the `Add` trait,
 //! and some traits that provide [`f*_algebraic`](algebraic::math) and [`f*_fast`](fast::math) implementations. (requires nightly)
-#![allow(internal_features)]
-#![cfg_attr(
-    feature = "modules",
-    feature(doc_auto_cfg, core_intrinsics, hint_assert_unchecked)
-)]
-
-#[cfg(feature = "modules")]
-pub mod algebraic;
-#[cfg(feature = "modules")]
-pub mod fast;
+/// Provides the algebraic math trait and macro.
+pub mod algebraic {
+    /// Changes all the math to algebraic float math. See [`fadd_algebraic`](core::intrinsics::fadd_algebraic).
+    ///
+    /// This allows automatic vectorization of float math easier for the compiler, among other things.
+    ///
+    /// This would lower `a + b + c + d` to `alge_add(alge_add(alge_add(a, b), c), d)` (which could be organized by the compiler into `(a + b) + (c + d)` if it chooses)
+    pub use lower_macros::algebraic as math;
+}
+/// Provides the fast math trait and macro. See terms and conditions[^1].
+///
+/// [^1]: <https://simonbyrne.github.io/notes/fastmath>
+pub mod fast {
+    /// Changes all the math to fast float math. See [`fadd_fast`](core::intrinsics::fadd_fast).
+    ///
+    /// This allows automatic vectorization of float math for the compiler, among other things.
+    ///
+    /// This would lower `a * b + c` to `fastadd(fastmul(a, b), c)`.
+    pub use lower_macros::fast as math;
+}
 
 /// Lower math to method calls. Only useful if you define the functions.
 /// ```
@@ -21,9 +31,5 @@ pub mod fast;
 /// // expands to
 /// // a.mul((&b).deref()).add(c.neg())
 /// ```
-#[macro_export]
-macro_rules! math {
-    ($($x:tt)+) => {
-        lower_macros::math! { $($x)+ }
-    };
-}
+/// <p style="display: none">
+pub use lower_macros::math;
