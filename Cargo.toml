@@ -1,6 +1,6 @@
 [package]
 name = "lower"
-version = "0.1.4"
+version = "0.2.0"
 authors = ["bend-n <bend.n@outlook.com>"]
 description = "desugar math where the compiler wont"
 edition = "2021"
@@ -10,4 +10,4 @@ keywrords = ["fast", "math", "float"]
 categories = ["hardware-support", "mathematics"]
 
 [dependencies]
-lower-macros = "0.1.1"
+lower-macros = "0.2"

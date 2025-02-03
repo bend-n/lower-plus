@@ -23,6 +23,18 @@ pub mod fast {
     pub use lower_macros::fast as math;
 }
 
+/// Applys the macro to your stmts.
+/// Argument can be `algebraic` | `fast` | `basic` | none
+/// ```
+/// # #![feature(core_intrinsics)]
+/// #[lower::apply(algebraic)]
+/// fn madd(a: f32, b: f32, c: f32) -> f32 {
+///   a * b + c
+/// }
+/// ```
+/// Enaables nicer formatting and better rust analyzer integration.
+pub use lower_macros::apply;
+
 /// Lower math to method calls. Only useful if you define the functions.
 /// ```
 /// # use std::ops::*;
@@ -31,5 +43,4 @@ pub mod fast {
 /// // expands to
 /// // a.mul((&b).deref()).add(c.neg())
 /// ```
-/// <p style="display: none">
 pub use lower_macros::math;

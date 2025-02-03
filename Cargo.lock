@@ -4,16 +4,16 @@ version = 3
 
 [[package]]
 name = "lower"
-version = "0.1.4"
+version = "0.2.0"
 dependencies = [
  "lower-macros",
 ]
 
 [[package]]
 name = "lower-macros"
-version = "0.1.1"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "383823c24b2a094a6a9de418eba3b60bf8186b688e74e4a20ba5321dfae04fba"
+checksum = "f0b43ed50f1f56bf1dedc1c8977b61394c9a970db3707c8b8b8ff81ac1b46d83"
 dependencies = [
  "proc-macro2",
  "quote",
