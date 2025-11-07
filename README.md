@@ -27,6 +27,7 @@ fn main() -> u8 {
 it should work for most expressions.
 
 also implements some modules that let it work with some core intrinsics (`f*_fast`, `f*_algebraic`). (nightly only!)
+and also for `saturating` math and `wrapping` math.
 
 ## why
 
@@ -54,3 +55,5 @@ fn madd<const N: usize>(x: [[f32; 3]; N]) -> [f32; N] {
     lower::algebraic! { x.map(|[a, b, c]| a * b + c) }
 }
 ```
+
+this is also great for wrapping/saturating math.

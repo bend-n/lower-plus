@@ -1,13 +1,13 @@
 [package]
 name = "lower"
-version = "0.2.0"
+version = "0.2.1"
 authors = ["bend-n <bend.n@outlook.com>"]
 description = "desugar math where the compiler wont"
-edition = "2021"
+edition = "2024"
 repository = "https://github.com/bend-n/lower-plus.git"
 license = "MIT"
-keywrords = ["fast", "math", "float"]
+keywords = ["fast", "math", "float"]
 categories = ["hardware-support", "mathematics"]
 
 [dependencies]
-lower-macros = "0.2"
+lower-macros = "0.2.10"
